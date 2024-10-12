@@ -1,0 +1,13 @@
+<section class="my-5 pt-5 container">
+    <h1 class="text-main fw-bolder text-center mb-5">All Categories</h1>
+    <div class="row g-5">
+        @for (c of categoriesList() ; track c._id) {
+        <div class="col-12 col-lg-6 col-xl-4">
+            <div  class="product" >
+                <img [src]="c.image" [alt]="c.name" class="object-fit-cover" style="height: 300px;">
+                <h1 class=" mt-2 h5 fw-bolder">{{c.name}}</h1>
+            </div>
+        </div>
+        }
+    </div>
+</section>

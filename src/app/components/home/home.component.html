@@ -1,0 +1,65 @@
+<section class="row d-none d-xl-flex g-0">
+  <div class="col-lg-9">
+    <owl-carousel-o [options]="customOptionsMain">
+      <ng-template carouselSlide>
+        <img
+          src="./assets/images/slider-image-3.jpeg"
+          height="400px"
+          alt="slider-image"
+        />
+      </ng-template>
+      <ng-template carouselSlide>
+        <img
+          src="./assets/images/grocery-banner-2.jpeg"
+          height="400px"
+          alt="slider-image"
+        />
+      </ng-template>
+      <ng-template carouselSlide>
+        <img
+          src="./assets/images/slider-2.jpeg"
+          height="400px"
+          alt="slider-image"
+        />
+      </ng-template>
+    </owl-carousel-o>
+  </div>
+  <div class="col-lg-3">
+    <div>
+      <img
+        src="./assets/images/slider-image-2.jpeg"
+        height="200px"
+        alt="slider-image"
+      />
+      <img
+        src="./assets/images/slider-image-1.jpeg"
+        height="200px"
+        alt="slider-image"
+      />
+    </div>
+  </div>
+</section>
+<section>
+  <h2 class="text-center my-5">Popular Categories</h2>
+  <owl-carousel-o [options]="customOptionsCat">
+    @for (cat of categoriesList; track cat._id) {
+    <ng-template carouselSlide>
+      <div>
+        <img [src]="cat.image" height="250px" class="w-100" [alt]="cat.name" />
+        <h3 class="h6 text-main">{{ cat.name }}</h3>
+      </div>
+    </ng-template>
+    }
+  </owl-carousel-o>
+</section>
+<section>
+  <h2 class="text-center">Popular Products</h2>
+  <input [(ngModel)]="text" type="search" placeholder="Search by name... " class="form-control w-50 mx-auto my-3">
+  <div class="row g-3 my-5">
+    @for (product of productsList | searchForProductByTitle : text; track product.id ) {
+    <div class="col-md-2">
+        <app-product-card [isInWishInp]="true" [product]="product"></app-product-card>
+    </div>
+    }
+  </div>
+</section>
